@@ -1,7 +1,9 @@
 <template>
-  <AppHeader/>
+  <AppHeader :is_auth ="isAuth"/>
   <section class="container">
-    <router-view/>
+    <router-view 
+      @isAuth="isAuth = $event"
+    />
   </section>
   <AppFooter/>
 </template>
@@ -10,7 +12,23 @@
 import AppHeader from '@/components/AppHeader'
 import AppFooter from '@/components/AppFooter'
 export default {
-  components: {AppHeader,AppFooter}
+  components: {AppHeader,AppFooter},
+
+  data() {
+    return {
+      isAuth: false 
+    }
+  },
+
+  created(){
+    if(localStorage.getItem('access')){
+      this.isAuth =true
+    }else{
+      this.$router.push({name: 'Login'})
+    }
+    
+  }
+
 }
 </script>
 

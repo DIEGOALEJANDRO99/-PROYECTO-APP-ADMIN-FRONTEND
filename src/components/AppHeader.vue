@@ -1,7 +1,7 @@
 <template>
    <header>
        <h1>DINO-ROCK FASHION</h1>
-       <nav>
+       <nav v-if="!isAuth">
            <router-link to = "/login">INICIAR SESIÓN</router-link>
        </nav>
    </header>
@@ -10,7 +10,11 @@
 <script>
 export default {
 
-    name : "AppHeader"
+    name : "AppHeader",
+
+    props:{
+        isAuth: Boolean
+    }
     
 }
 </script>

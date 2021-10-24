@@ -34,24 +34,30 @@ export default {
 
   methods: {
     login() {
-      axios.post("https://deploy-full.herokuapp.com/loginUser/", this.form, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((result) => {
-          console.log(result);
-          localStorage.setItem("user", this.form.username);
-          localStorage.setItem("refresh", result.data.refresh);
-          localStorage.setItem("access", result.data.access);
-          this.$router.push({name: 'Home'});
-        })
-        .catch((error) => {
-          console.log(error);
-          if(error.response.status === 401)
-            alert("ERROR 401: Credenciales incorrectas")
+      if (this.form.username.length > 1 && this.form.password.length > 1) {
+        axios
+          .post("https://deploy-full.herokuapp.com/loginUser/", this.form, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((result) => {
+            console.log(result);
+            localStorage.setItem("user", this.form.username);
+            localStorage.setItem("refresh", result.data.refresh);
+            localStorage.setItem("access", result.data.access);
+            this.$emit('isAuth',true)
+            this.$router.push({ name: "Home" });
+            
+          })
+          .catch((error) => {
+            console.log(error);
+            if (error.response.status === 401)
+              alert("ERROR 401: Credenciales incorrectas");
+              this.$emit('isAuth',false)
 
-        });
+          });
+      }
     },
   },
 };
