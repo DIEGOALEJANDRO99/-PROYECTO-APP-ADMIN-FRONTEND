@@ -64,7 +64,7 @@ export default {
 </script>
 <style scoped>
 .login {
-  height: 80%;
+  height: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
