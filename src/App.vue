@@ -43,6 +43,7 @@ export default {
 
 .container{
   
-  height: calc(80vh);
+  height: calc(76vh);
+  background-color: #808080;
 }
 </style>

@@ -73,25 +73,33 @@ form {
   width: 350px;
   height: 200px;
   border-radius: 10px;
-  border: 2px solid cyan;
+  border: 2px solid #222222;
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: fantasy;
+  font-family: monospace;
 }
 input {
-  font-family: fantasy;
+  font-family: monospace;
   height: 25px;
   padding: 5px 10px;
+
+
+}
+h3{
+  color: #ffffff;
+  font-size: 25px;
+
 }
 button {
-  font-family: fantasy;
+  font-family: monospace;
   font-weight: bold;
   color: white;
-  background-color: rgb(224, 64, 211);
+  background-color: #e36b2c;
   border: none;
   border-radius: 25px;
   padding: 8px;
+  cursor: pointer;
 }
 </style>

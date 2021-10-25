@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <h4>GRUPO 4</h4>
+        <h4> G R U P O    4 P - 4 1</h4>
     </footer>
 
 </template>
@@ -16,13 +16,16 @@ export default {
 
 footer{
 
-    background-color: aqua;
+    background-color: #222222;
     height: 5vh;
-    font-family: fantasy;
+    font-family: monospace;
+    padding: 30PX;
+    font-size: 20px;
+
 }
 
 h4{
-    color: azure;
+    color: #E36B2C;
     text-align:center;
     
 

@@ -25,12 +25,11 @@ export default {
 header{
     font-family:fantasy;
     margin: 0;
-    padding: 50;
     width: 100%;
-    height: 5vh;
+    height: 10vh;
     min-height: 50px;
-    background-color: aqua;
-    color: rgb(255, 255, 255);
+    background-color:#222222;
+    color: #E36B2C;
     display: flex;
     justify-content: space-between;
     align-items: center;

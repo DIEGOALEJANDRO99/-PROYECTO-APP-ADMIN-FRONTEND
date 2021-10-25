@@ -18,8 +18,12 @@ body{
   margin: 0;
 }
 .home{
-  margin: 0;
-  padding: 0;
-  font-size: 60%;
+  padding: 0px;
+  margin: 0px;
+}
+h1{
+  font-size: 200%;
+  padding: 0px;
+  margin: 0px;
 }
 </style>
