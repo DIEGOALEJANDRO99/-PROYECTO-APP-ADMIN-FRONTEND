@@ -71,7 +71,7 @@ export default {
 }
 form {
   width: 350px;
-  height: 200px;
+  height: 280px;
   border-radius: 10px;
   border: 2px solid #222222;
   padding: 20px 20px;
@@ -84,9 +84,20 @@ input {
   font-family: monospace;
   height: 25px;
   padding: 5px 10px;
+  outline: none;
+  border-radius: 25px;
+  border: 2px solid #222222;
 
 
 }
+input:focus {
+  font-family:monospace ;
+  height: 28px;
+  padding: 5px 10px;
+  border: 4px solid #4fc6ca;
+
+}
+
 h3{
   color: #ffffff;
   font-size: 25px;
