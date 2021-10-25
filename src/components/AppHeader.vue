@@ -1,7 +1,7 @@
 <template>
    <header>
        <h1>DINO-ROCK FASHION</h1>
-       <nav v-if="!isAuth">
+       <nav v-if=!isAuth>
            <router-link to = "/login">INICIAR SESIÓN</router-link>
        </nav>
    </header>

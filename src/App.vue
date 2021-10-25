@@ -1,5 +1,5 @@
 <template>
-  <AppHeader :is_auth ="isAuth"/>
+  <AppHeader :is-auth="isAuth"/>
   <section class="container">
     <router-view 
       @isAuth="isAuth = $event"
