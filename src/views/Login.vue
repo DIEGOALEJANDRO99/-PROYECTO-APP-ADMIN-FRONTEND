@@ -34,7 +34,7 @@ export default {
 
   methods: {
     login() {
-      if (this.form.username.length > 1 && this.form.password.length > 1) {
+      if (this.form.username != ""> 1 && this.form.password.length != "") {
         axios
           .post("https://deploy-full.herokuapp.com/loginUser/", this.form, {
             headers: {
@@ -42,7 +42,7 @@ export default {
             },
           })
           .then((result) => {
-            console.log(result);
+            
             localStorage.setItem("user", this.form.username);
             localStorage.setItem("refresh", result.data.refresh);
             localStorage.setItem("access", result.data.access);
@@ -51,12 +51,14 @@ export default {
             
           })
           .catch((error) => {
-            console.log(error);
+            
             if (error.response.status === 401)
               alert("ERROR 401: Credenciales incorrectas");
               this.$emit('isAuth',false)
 
           });
+      }else{
+        alert("ERROR: Ingrese las crendenciales");
       }
     },
   },
