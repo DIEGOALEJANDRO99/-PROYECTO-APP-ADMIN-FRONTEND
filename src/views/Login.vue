@@ -73,15 +73,16 @@ export default {
 }
 form {
   width: 350px;
-  height: 280px;
+  height: 200px;
   border-radius: 10px;
   border: 2px solid #222222;
-  padding: 20px 20px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: monospace;
 }
+
 input {
   font-family: monospace;
   height: 25px;
