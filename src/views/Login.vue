@@ -47,7 +47,7 @@ export default {
             localStorage.setItem("refresh", result.data.refresh);
             localStorage.setItem("access", result.data.access);
             this.$emit('isAuth',true)
-            this.$router.push({ name: "Home" });
+            this.$router.push({ name: "GetProduct" });
             
           })
           .catch((error) => {
