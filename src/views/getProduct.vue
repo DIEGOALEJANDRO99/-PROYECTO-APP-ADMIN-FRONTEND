@@ -15,22 +15,37 @@
     </section>
     <div class="Info">
       <h2>Información del producto</h2>
-      <h3>ID: <span>{{ form.id_prod }} </span></h3>
-      <h3>
-        NOMBRE: <span>{{ form.name_prod }} </span>
-      </h3>
-      <h3>
-        DESCRIPCION: <span>{{ form.desc_prod }} </span>
-      </h3>
-      <h3>
-        PRECIO: <span>{{ form.price_prod }} Euros</span>
-      </h3>
-      <h3>
-        CANTIDAD: <span>{{ form.amount_prod }} </span>
-      </h3>
-      <h3>
-        TALLA: <span>{{ form.size_prod }} </span>
-      </h3>
+      <table>
+        <tr>
+          <td>ID</td>
+          <td>NOMBRE</td>
+          <td>DESCRIPCION</td>
+          <td>PRECIO</td>
+          <td>CANTIDAD</td>
+          <td>TALLA</td>
+        </tr>
+
+        <tr>
+          <td>
+            <span>{{ form.id_prod }} </span>
+          </td>
+          <td>
+            <span>{{ form.name_prod }} </span>
+          </td>
+          <td>
+            <span>{{ form.desc_prod }} </span>
+          </td>
+          <td>
+            <span>{{ form.price_prod }} Euros</span>
+          </td>
+          <td>
+            <span>{{ form.amount_prod }} </span>
+          </td>
+          <td>
+            <span>{{ form.size_prod }} </span>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
@@ -56,28 +71,43 @@ export default {
   },
   methods: {
     login() {
-      axios
-        .get(
-          "https://deploy-full.herokuapp.com/productDetail/"+this.form.id_prod,
-          
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
-        .then((result) => {
-          this.form.name_prod = result.data.name_prod;
-          this.form.desc_prod = result.data.desc_prod;
-          this.form.amount_prod = result.data.amount_prod;
-          this.form.price_prod = result.data.price_prod;
-          this.form.size_prod = result.data.size_prod;
-        })
-        .catch((error) => {
-          if (error) {
-            alert(error);
-          }
-        });
+      if (this.form.id_prod != null > 1) {
+        axios
+          .get(
+            "https://deploy-full.herokuapp.com/productDetail/" +
+              this.form.id_prod,
+
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((result) => {
+            this.form.name_prod = result.data.name_prod;
+            this.form.desc_prod = result.data.desc_prod;
+            this.form.amount_prod = result.data.amount_prod;
+            this.form.price_prod = result.data.price_prod;
+            this.form.size_prod = result.data.size_prod;
+          })
+          .catch((error) => {
+            if (error) {
+              alert("producto no encontrado");
+              this.form.name_prod = "";
+              this.form.desc_prod = "";
+              this.form.amount_prod = 0;
+              this.form.price_prod = 0;
+              this.form.size_prod = "";
+            }
+          });
+      } else {
+        alert("Ingrese una Id valida");
+        this.form.name_prod = "";
+        this.form.desc_prod = "";
+        this.form.amount_prod = 0;
+        this.form.price_prod = 0;
+        this.form.size_prod = "";
+      }
     },
   },
 };
@@ -94,8 +124,6 @@ export default {
   justify-content: center;
   align-items: center;
   font-family: monospace;
-  
-
 }
 
 .getPr {
@@ -106,8 +134,8 @@ export default {
 }
 
 form {
-  width: 350px;
-  height: 150px;
+  width: 450px;
+  height: 200px;
   border-radius: 10px;
   border: 2px solid #222222;
   padding: 10px 10px;
@@ -115,7 +143,8 @@ form {
   flex-direction: column;
   justify-content: space-between;
   font-family: monospace;
-  margin: 10PX;
+  margin: 10px;
+  font-size: 20px;
 }
 
 input {
@@ -142,15 +171,27 @@ button {
   padding: 8px;
   cursor: pointer;
 }
-h2{
-    color: aliceblue;
+h2 {
+  color: aliceblue;
+  padding: 3px;
 }
-h3{
-    color:aliceblue;
-    font-size: 15px;
-}
-.Info span{
-    color: black;
+.Info span {
+  color: black;
 }
 
+table {
+  width: 80%;
+  border: 3px solid black;
+  border-collapse: collapse;
+  margin: 30px;
+}
+th,
+td {
+  border: 3px solid black;
+  border-collapse: collapse;
+  padding: 15px;
+  font-family: monospace;
+  font-size: 22px;
+  color: white;
+}
 </style>

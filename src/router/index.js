@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import getProduct from '../views/getProduct.vue'
 import productUpdate from '../views/productUpdate.vue'
+import deleteProduct from '../views/deleteProduct.vue'
 
 const routes = [
   {
@@ -22,8 +23,13 @@ const routes = [
   },
   {
     path: '/productUpdate',
-    name: 'ProductUpdate',
+    name: 'productUpdate',
     component: productUpdate
+  },
+  {
+    path: '/deleteProduct',
+    name: 'deleteProduct',
+    component: deleteProduct
   },
   
 ]
