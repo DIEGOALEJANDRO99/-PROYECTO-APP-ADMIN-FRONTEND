@@ -2,8 +2,8 @@
 <template>
   <div>
     <section class="getPr">
-      <form @submit.prevent="login()">
-        <H4>LISTAR PRODUCTO POR ID</H4>
+      <form class="formGP" @submit.prevent="login()">
+        <H3>LISTAR PRODUCTO POR ID</H3>
         <input
           type="number"
           class="input-form"
@@ -47,11 +47,13 @@
         </tr>
       </table>
     </div>
+    <div>
+      <form class="formGP2" @submit.prevent="home()">
+        <button type="submit">REGRESAR</button>
+    </form>
+    </div>
   </div>
 </template>
-
-
-
 
 <script>
 import axios from "axios";
@@ -70,6 +72,10 @@ export default {
     };
   },
   methods: {
+    home(){
+      this.$router.push({ name: "Home" });
+
+    },
     login() {
       if (this.form.id_prod != null > 1) {
         axios
@@ -116,6 +122,16 @@ export default {
 
 
 <style scoped>
+.getPr{
+  height: 1%;
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+
+}
 .Info {
   width: 100%;
   height: 30%;
@@ -126,14 +142,9 @@ export default {
   font-family: monospace;
 }
 
-.getPr {
-  height: 95%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-form {
+
+.gormGP {
   width: 450px;
   height: 200px;
   border-radius: 10px;
@@ -180,7 +191,7 @@ h2 {
 }
 
 table {
-  width: 80%;
+  width: 100%;
   border: 3px solid black;
   border-collapse: collapse;
   margin: 30px;
@@ -189,7 +200,7 @@ th,
 td {
   border: 3px solid black;
   border-collapse: collapse;
-  padding: 15px;
+  padding: 4px;
   font-family: monospace;
   font-size: 22px;
   color: white;

@@ -1,15 +1,14 @@
 <template>
   <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
-  <section class="update">
-    <form class="formUC" @submit.prevent="update()">
-      <H3>ACTUALIZACIÓN DEL PRODUCTO</H3>
+  <section class="homeCP">
+    <form class="formCP" @submit.prevent="create()">
+      <H3>INGRESE INFORMACIÓN DESCRIPCIÓN DEL PRODUCTO</H3>
       <input
         type="number"
         class="input-form"
         placeholder="Id del producto"
         v-model="form.id_prod"
       />
-
       <input
         type="text"
         class="input-form"
@@ -40,119 +39,123 @@
         placeholder="Talla del producto"
         v-model="form.size_prod"
       />
-
-      <button type="submit">ACTUALIZAR PRODUCTO</button>
+    
+      <button type="submit">CREAR PRODUCTO</button>
     </form>
-    <form  class="formUC2" @submit.prevent="home()">
+    <form class="formCP2" @submit.prevent="home()">
         <button type="submit">REGRESAR</button>
     </form>
+    
   </section>
 </template>
 
 <script>
+// @ is an alias to /src
 import axios from "axios";
 export default {
-  name: "productUpdate",
+  name: 'createProduct',
 
   data() {
     return {
+
       form: {
         id_prod: 0,
-        name_prod: "",
+        name_prod:"",
         desc_prod: "",
         amount_prod: 0,
         price_prod: 0,
         size_prod: "",
       },
+        
     };
+   
   },
+
   methods: {
-    home(){
-      this.$router.push({ name: "Home" });
-    },
-    update() {
-      axios
-        .put("https://deploy-full.herokuapp.com/productUpdate/" + this.form.id_prod,  this.form, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+
+    create(){
+        axios
+          .post("https://deploy-full.herokuapp.com/productCreate/", this.form, {
+            headers: {
+              "Content-Type": "application/json",
+            },
         })
         .then(() => {
-          alert("Producto Actualizado");
+          alert("Producto Creado");
+
         })
         .catch((error) => {
-          if (error) alert("Producto no actualizado" );
+          if (error)
+            alert("Producto no creado" + error);
         });
+      
     },
-  },
-};
+    home(){
+      this.$router.push({ name: "Home" });
+    }
+  }
+}
 </script>
 
 <style>
 body {
-  display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: stretch;
-	align-content: stretch;
   margin: 0;
 }
-.update {
-  height: 100%;
-  display: flex;
+.homeCP{
+  height: 95%;
+	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: flex-center;
 	align-items: center;
 	align-content: flex-start;
 }
-.formUC {
+.formCP {
   width: 350px;
-  height: 320px;
+  height: 300px;
   border-radius: 10px;
   border: 2px solid #222222;
-  padding: 10px 20px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: monospace;
 }
-.formUC2{
-  border: none;
-  margin: 10px;
-}
 input {
   font-family: monospace;
   height: 25px;
   padding: 5px 10px;
+  margin: 2px;
   outline: none;
   border-radius: 25px;
   border: 2px solid #222222;
-
+}
+h1 {
+  font-size: 200%;
+  padding: 0px;
+  margin: 0px;
 
 }
-input:focus {
-  font-family:monospace ;
-  height: 28px;
-  padding: 5px 10px;
-  border: 4px solid #4fc6ca;
+.formCP2{
 
-}
-
-h3{
-  color: #ffffff;
-  font-size: 25px;
-
-}
-button {
-  font-family: monospace;
-  font-weight: bold;
-  color: white;
-  background-color: #e36b2c;
   border: none;
-  border-radius: 25px;
-  padding: 8px;
-  cursor: pointer;
+  display: flex;
+  height: 45px;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+	align-content: space-around;
+}
+button{
+
+  margin: 2px;
+}
+.formCP h3{
+
+  margin: 0%;
+}
+h3{
+  font-size: 20px;
 }
 </style>

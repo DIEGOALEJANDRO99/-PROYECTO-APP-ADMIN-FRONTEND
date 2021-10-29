@@ -1,7 +1,9 @@
 <template>
+  <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1> 
+  <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1> 
   <section class="delete">
-    <form @submit.prevent="deletes()">
-      <H4>ELIMINAR PRODUCTO POR ID</H4>
+    <form class="formDP1" @submit.prevent="deletes()">
+      <H3>ELIMINAR PRODUCTO POR ID</H3>
       <input
         type="number"
         class="input-form"
@@ -9,6 +11,9 @@
         v-model="form.id_prod"
       />
       <button type="submit">ELIMINAR</button>
+    </form>
+    <form class="formDP2" @submit.prevent="home()">
+        <button type="submit">REGRESAR</button>
     </form>
   </section>
 </template>
@@ -26,6 +31,9 @@ export default {
     };
   },
   methods: {
+    home(){
+      this.$router.push({ name: "Home" });
+    },
     deletes() {
       if (this.form.id_prod > 0) {
         if (confirm("¿Esta seguro que desea eliminarlo?")) {
@@ -65,12 +73,16 @@ export default {
 .delete {
   height: 80%;
   width: 10%px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-center;
+	align-items: center;
+	align-content: flex-start;
+
 
 }
-form {
+.formDP1 {
   width: 350px;
   height: 200px;
   border-radius: 10px;
@@ -78,7 +90,7 @@ form {
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-family: monospace;
 }
 
@@ -96,5 +108,10 @@ input:focus {
   padding: 5px 10px;
   border: 4px solid #4fc6ca;
 }
+.formDP2{
+  border: none;
+  padding: 20px 20px;
+}
+
 
 </style>

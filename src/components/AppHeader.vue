@@ -1,9 +1,7 @@
 <template>
    <header>
        <h1>DINO-ROCK FASHION</h1>
-       <nav v-if=!isAuth>
-           <router-link to = "/login">INICIAR SESIÓN</router-link>
-       </nav>
+      
    </header>
     
 </template>
@@ -45,9 +43,10 @@ nav a{
     font-family: fantasy;
     text-decoration: none;
     color: rgb(255, 248, 248);
-    border: 2px solid rgb(255, 255, 255);
+    border: 10px solid rgb(255, 255, 255);
     border-radius: 6px;
     padding: 2px 10px;
+    
 }
 nav a:first-of-type{
     margin-right: 30px;

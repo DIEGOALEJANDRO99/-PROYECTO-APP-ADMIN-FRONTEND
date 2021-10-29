@@ -47,18 +47,18 @@ export default {
             localStorage.setItem("refresh", result.data.refresh);
             localStorage.setItem("access", result.data.access);
             this.$emit('isAuth',true)
-            this.$router.push({ name: "GetProduct" });
+            this.$router.push({ name: "Home" });
             
           })
           .catch((error) => {
             
             if (error.response.status === 401)
-              alert("ERROR 401: Credenciales incorrectas");
+              alert("Credenciales incorrectas");
               this.$emit('isAuth',false)
 
           });
       }else{
-        alert("ERROR: Ingrese las crendenciales");
+        alert("Ingrese las crendenciales");
       }
     },
   },

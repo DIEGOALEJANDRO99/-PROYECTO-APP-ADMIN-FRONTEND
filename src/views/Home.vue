@@ -1,126 +1,101 @@
 <template>
-  <h1>BIENVENIDO ADMINISTRADOR</h1>
-  <section class="home">
-    <form @submit.prevent="create()">
-      <H3>INGRESE INFORMACIÓN DESCRIPCIÓN DEL PRODUCTO</H3>
-      <input
-        type="number"
-        class="input-form"
-        placeholder="Id del producto"
-        v-model="form.id_prod"
-      />
-      <input
-        type="text"
-        class="input-form"
-        placeholder="Nombre del producto"
-        v-model="form.name_prod"
-      />
-      <input
-        type="text"
-        class="input-form"
-        placeholder="Descripción del producto"
-        v-model="form.desc_prod"
-      />
-      <input
-        type="number"
-        class="input-form"
-        placeholder="Cantidad"
-        v-model="form.amount_prod"
-      />
-      <input
-        type="number"
-        class="input-form"
-        placeholder="Precio del producto"
-        v-model="form.price_prod"
-      />
-      <input
-        type="text"
-        class="input-form"
-        placeholder="Talla del producto"
-        v-model="form.size_prod"
-      />
-      <button type="submit">CREAR PRODUCTO</button>
-    </form>
-  </section>
+    <div class="h1Home">
+        <h1>BIENVENIDOR ADMINISTRADOR</h1>
+    </div>
+    <section class="home">
+
+        <form id="formHome" @submit.prevent="crear()">
+            <button type="submit">CREAR PRODUCTO</button>
+        </form>
+        <form  id="formHome" class="form1" @submit.prevent="update()">
+            <button type="submit">ACTUALIZAR PRODUCTO</button>
+        </form>
+        <form id="formHome" @submit.prevent="deleteP()">
+            <button type="submit">ELIMINAR PRODUCTO</button>
+        </form>
+        <form id="formHome" @submit.prevent="detail()">
+            <button type="submit">MOSTRAR PRODUCTO</button>
+        </form>
+        <form id="formHome" @submit.prevent="checkCreate()">
+            <button type="submit">CREAR FACTURA</button>
+        </form>
+        <form id="formHome" @submit.prevent="checkDetail()">
+            <button type="submit">MOSTRAR FACTURA</button>
+        </form>
+        <form id="formHome" @submit.prevent="exit()">
+            <button type="submit">CERRAR SESIÓN</button>
+        </form>
+
+    </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import axios from "axios";
 export default {
-  name: 'Home',
 
-  data() {
-    return {
+    name: "Home",
 
-      form: {
-        id_prod: 0,
-        name_prod:"",
-        desc_prod: "",
-        amount_prod: 0,
-        price_prod: 0,
-        size_prod: "",
-      },
-        
-    };
-   
-  },
+    methods: {
 
-  methods: {
-    create(){
-      
-        axios
-          .post("https://deploy-full.herokuapp.com/productCreate/", this.form, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-        })
-        .then(() => {
-          alert("Producto Creado");
+        crear(){
+            this.$router.push({ name: "createProduct" });
+        },
+        update(){
+            this.$router.push({ name: "productUpdate" });
+        },
+        deleteP(){
+            this.$router.push({ name: "deleteProduct" });
+        },
+        detail(){
+            this.$router.push({ name: "getProduct" });
+        },
+        checkCreate(){
+            this.$router.push({ name: "checkCreate" });
+        },
+        checkDetail(){
+            this.$router.push({ name: "getCheck" });
+        },
+        exit(){
+            localStorage.setItem("user", "");
+            localStorage.setItem("refresh", "");
+            localStorage.setItem("access", "");
+            this.$router.push({ name: "Login" });
+        }
 
-        })
-        .catch((error) => {
-          if (error)
-            alert("Producto no creado" + error);
-        });
-      
-    }
-  }
+    },
+    
 }
 </script>
 
 <style>
-body {
-  margin: 0;
+body{
+    display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
+    margin: 0;
 }
-.home {
-  height: 95%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.home{
+    height: 70%;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
 }
-form {
-  width: 350px;
-  height: 400px;
-  border-radius: 10px;
-  border: 2px solid #222222;
-  padding: 20px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: monospace;
+#formHome{
+    height: 10px;
+    border: none;
+    margin: 15px;
+    }
+.h1Home h1{
+    color: white;
 }
-input {
-  font-family: monospace;
-  height: 25px;
-  padding: 5px 10px;
-  outline: none;
-  border-radius: 25px;
-  border: 2px solid #222222;
-}
-h1 {
-  font-size: 200%;
-  padding: 0px;
-  margin: 0px;
-}
+
+
+
+
+
 </style>
