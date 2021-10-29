@@ -95,6 +95,7 @@ export default {
             this.form.amount_prod = result.data.amount_prod;
             this.form.price_prod = result.data.price_prod;
             this.form.size_prod = result.data.size_prod;
+            
           })
           .catch((error) => {
             if (error) {

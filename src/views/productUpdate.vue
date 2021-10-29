@@ -43,8 +43,8 @@
 
       <button type="submit">ACTUALIZAR PRODUCTO</button>
     </form>
-    <form  class="formUC2" @submit.prevent="home()">
-        <button type="submit">REGRESAR</button>
+    <form class="formUC2" @submit.prevent="home()">
+      <button type="submit">REGRESAR</button>
     </form>
   </section>
 </template>
@@ -67,21 +67,32 @@ export default {
     };
   },
   methods: {
-    home(){
+    home() {
       this.$router.push({ name: "Home" });
     },
     update() {
       axios
-        .put("https://deploy-full.herokuapp.com/productUpdate/" + this.form.id_prod,  this.form, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .put(
+          "https://deploy-full.herokuapp.com/productUpdate/" +
+            this.form.id_prod,
+          this.form,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then(() => {
           alert("Producto Actualizado");
+          this.form.id_prod = 0;
+          this.form.name_prod = "";
+          this.form.amount_prod = 0;
+          this.form.price_prod = 0;
+          this.form.desc_prod = "";
+          this.form.size_prod = "";
         })
         .catch((error) => {
-          if (error) alert("Producto no actualizado" );
+          if (error) alert("Producto no actualizado");
         });
     },
   },
@@ -91,21 +102,21 @@ export default {
 <style>
 body {
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: stretch;
-	align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: stretch;
   margin: 0;
 }
 .update {
   height: 100%;
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: flex-center;
-	align-items: center;
-	align-content: flex-start;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-center;
+  align-items: center;
+  align-content: flex-start;
 }
 .formUC {
   width: 350px;
@@ -118,7 +129,7 @@ body {
   justify-content: space-between;
   font-family: monospace;
 }
-.formUC2{
+.formUC2 {
   border: none;
   margin: 10px;
 }
@@ -129,21 +140,17 @@ input {
   outline: none;
   border-radius: 25px;
   border: 2px solid #222222;
-
-
 }
 input:focus {
-  font-family:monospace ;
+  font-family: monospace;
   height: 28px;
   padding: 5px 10px;
   border: 4px solid #4fc6ca;
-
 }
 
-h3{
+h3 {
   color: #ffffff;
   font-size: 25px;
-
 }
 button {
   font-family: monospace;

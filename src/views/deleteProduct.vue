@@ -50,6 +50,7 @@ export default {
             .then((result) => {
               if(result){
                   alert("Producto eliminado")
+                  this.form.id_prod = 0;
               }
               
             })

@@ -82,6 +82,14 @@ export default {
         })
         .then(() => {
           alert("Producto Creado");
+          this.form.id_prod=0;
+          this.form.name_prod="";
+          this.form.amount_prod=0;
+          this.form.price_prod=0;
+          this.form.desc_prod="";
+          this.form.size_prod="";
+
+
 
         })
         .catch((error) => {

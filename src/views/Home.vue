@@ -1,4 +1,6 @@
 <template>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;</h1>
     <div class="h1Home">
         <h1>BIENVENIDOR ADMINISTRADOR</h1>
     </div>
